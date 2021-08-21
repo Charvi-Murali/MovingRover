@@ -1,10 +1,14 @@
 canvas=document.getElementById('myCanvas');
 ctx=canvas.getContext("2d")
+images=["mars.jpg", "mars 1.jpg", "mars 2.jpg", "mars 3.jpg"]
+
+random_number=Math.floor(Math.random()*4)
+console.log(random_number)
+background_image=images[random_number]
 
 rover_width=100;
 rover_height=90;
 
-background_image="mars.jpg"
 rover_image="rover.png"
 
 rover_x=10;
@@ -34,7 +38,7 @@ function my_keydown(e){
     keyPressed=e.keyCode;
     console.log(keyPressed)
 
-    if(keyPressed == '30'){
+    if(keyPressed == '38'){
         up()
         console.log("up")
     }
@@ -52,5 +56,38 @@ function my_keydown(e){
     if(keyPressed == '39'){
         right()
         console.log("right")
+    }
+}
+
+function up(){
+    if(rover_y>0){
+        rover_y=rover_y-10;
+        console.log(rover_x, rover_y)
+        uploadBackground();
+        uploadRover();
+    }
+}
+function down(){
+    if(rover_y<500){
+        rover_y=rover_y+10;
+        console.log(rover_x, rover_y);
+        uploadBackground();
+        uploadRover();
+    }
+}
+function left(){
+    if(rover_x>0){
+        rover_x=rover_x-10;
+        console.log(rover_x, rover_y);
+        uploadBackground();
+        uploadRover();
+    }
+}
+function right(){
+    if(rover_x<750){
+        rover_x=rover_x+10;
+        console.log(rover_x, rover_y)
+        uploadBackground()
+        uploadRover()
     }
 }
